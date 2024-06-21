@@ -1,0 +1,33 @@
+name: compose-hands-on
+services:
+  api:
+    build:
+      context: ..
+      dockerfile: ./docker/Dockerfile
+      target: development
+    container_name: api-container
+    ports:
+      - 8080:8080
+    depends_on:
+      db:
+        condition: service_healthy
+
+  db:
+    image: postgres:15
+    ports:
+      - 5432:5432
+    healthcheck:
+      test: psql -U postgres
+      interval: 5s
+      timeout: 5s
+      retries: 10
+      start_period: 5s
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=mypassword
+      - POSTGRES_DB=appdb
+    volumes:
+      - db-data:/var/lib/postgresql/data
+
+volumes:
+  db-data:
