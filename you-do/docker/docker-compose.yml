@@ -2,14 +2,14 @@ services:
   api:
     build:
       target: development
-    container_name: compose-hands-on-api-you-do
+    container_name: compose-hands-on-you-do-api
     ports:
       - 8080:8080
     command: java -jar api.jar
 
   db:
     image: postgres:15
-    container_name: compose-hands-on-db-you-do
+    container_name: compose-hands-on-you-do-db
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=mypassword
