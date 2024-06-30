@@ -8,6 +8,8 @@ services:
     ports:
       - 8080:7070
     command: java -jar app.jar
+    networks:
+      - immersive-network
     depends_on:
       db:
         condition: service_healthy
@@ -25,5 +27,11 @@ services:
       timeout: 5s
       retries: 10
       start_period: 5s
+    networks:
+      - immersive-network
     volumes:
       - ../db-volumes:/var/lib/postgresql/data
+
+networks:
+  immersive-network:
+    driver: bridge
