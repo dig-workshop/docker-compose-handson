@@ -3,8 +3,6 @@ services:
     build:
       target: development
     container_name: compose-hands-on-you-do-api
-    ports:
-      - 8080:8080
     command: java -jar api.jar
 
   db:
