@@ -8,7 +8,7 @@ export default function App() {
     return (
         <>
             <a href="https://docs.docker.com/compose/" target="_blank">
-                <img src={"./compose.png"} className="logo react" alt="React logo"/>
+                <img src="../../../compose.png" className="logo react" alt="React logo"/>
             </a>
             <h2>Immersive WS</h2>
             <h1>Docker Compose Hands on</h1>
