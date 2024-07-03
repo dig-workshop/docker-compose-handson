@@ -32,16 +32,7 @@ services:
       retries: 10
       start_period: 5s
 
-  web:
-    build: ./web
-    container_name: compose-hands-on-you-do-advanced-web
-    ports:
-      - 5173:5173
-    networks:
-      - happy-network
-    volumes:
-      - ./web:/app
-      - /app/node_modules
+
 
 networks:
   happy-network:
