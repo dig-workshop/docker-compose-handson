@@ -33,6 +33,8 @@ ___
 
 - `api`や`db`周りの仕様は`you-do-2`と同じです
 - `web`の`App.tsx`にフロントエンドの実装があります。`localhost:8080/api/users`のエンドポイントを叩いて、結果を表示するロジックが含まれます。
+- `web/src/vite.config.ts`にてproxyの設定をしています。`'/api': 'http://api:8080'`apiコンテナがComposeによって名前解決されているため、ホストにサービス名を指定できます。
+※ proxyに`http://localhost:8080`を指定してしまうと、ホストのlocalhostをリッスンしてしまい、コンテナにアクセスできないため`ERR_EMPTY_RESPONSE`エラーとなります。
 
 
 ## ルール・やること
