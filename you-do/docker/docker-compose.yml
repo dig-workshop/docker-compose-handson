@@ -1,9 +1,18 @@
 services:
   api:
     build:
+      context: ..
+      dockerfile: ./docker/Dockerfile-server
       target: development
     container_name: compose-hands-on-you-do-api
-    command: java -jar api.jar
+    ports:
+      - 8080:7070
+    networks:
+      - immersive-network
+    command: java -jar app.jar
+    depends_on:
+      db:
+        condition: service_healthy
 
   db:
     image: postgres:15
@@ -12,5 +21,19 @@ services:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=mypassword
       - POSTGRES_DB=appdb
-    depends_on:
-      - api
+    ports:
+      - 5432:5432
+    networks:
+      - immersive-network
+    volumes:
+      - ../db-data:/var/lib/postgresql/data
+    healthcheck:
+      test: psql -U postgres
+      interval: 5s
+      timeout: 5s
+      retries: 10
+      start_period: 5s
+
+networks:
+  immersive-network:
+    driver: bridge
