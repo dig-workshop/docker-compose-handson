@@ -1,0 +1,48 @@
+services:
+  api:
+    build: ./api
+    container_name: compose-hands-on-you-do-2-api
+    ports:
+      - 8080:8080
+    volumes:
+      - ./api:/app
+    networks:
+      - happy-network
+    depends_on:
+      db:
+        condition: service_healthy
+
+  db:
+    image: postgres:15
+    container_name: compose-hands-on-you-do-2-db
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=mypassword
+      - POSTGRES_DB=appdb
+    ports:
+      - 5432:5432
+    networks:
+      - happy-network
+    volumes:
+      - ./db-data:/var/lib/postgresql/data
+    healthcheck:
+      test: psql -U postgres
+      interval: 5s
+      timeout: 5s
+      retries: 10
+      start_period: 5s
+
+  web:
+    build: ./web
+    container_name: compose-hands-on-you-do-2-web
+    ports:
+      - 5173:5173
+    networks:
+      - happy-network
+    volumes:
+      - ./web:/app
+      - /app/node_modules
+
+networks:
+  happy-network:
+    driver: bridge

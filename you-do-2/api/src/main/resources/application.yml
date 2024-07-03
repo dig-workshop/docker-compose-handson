@@ -1,0 +1,16 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://db:5432/appdb
+    username: postgres
+    password: mypassword
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: none
+
+logging:
+  level:
+    root: info
+    org:
+      springframework:
+        security: info
