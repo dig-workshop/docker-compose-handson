@@ -1,7 +1,7 @@
 services:
   api:
     build: ./api
-    container_name: compose-hands-on-you-do-2-api
+    container_name: compose-hands-on-you-do-advanced-api
     ports:
       - 8080:8080
     volumes:
@@ -14,7 +14,7 @@ services:
 
   db:
     image: postgres:15
-    container_name: compose-hands-on-you-do-2-db
+    container_name: compose-hands-on-you-do-advanced-db
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=mypassword
@@ -34,7 +34,7 @@ services:
 
   web:
     build: ./web
-    container_name: compose-hands-on-you-do-2-web
+    container_name: compose-hands-on-you-do-advanced-web
     ports:
       - 5173:5173
     networks:
