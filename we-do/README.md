@@ -23,6 +23,8 @@ ___
 
 ### ● Dockerfile + コマンドで起動するパターン
 
+※ホストのポート8080は干渉する可能性があるので、今回は8888に設定しています
+
 1. イメージをビルドする
 ```bash
 cd docker
@@ -35,10 +37,10 @@ docker image ls
 
 3. コンテナを起動する
 ```bash
-docker container run -p 8080:8080 --name api --rm api-img
+docker container run -p 8888:8080 --name api --rm api-img
 ```
 
-4. http://localhost:8080/api/hello?lastName=Ichinomiya にアクセス
+4. http://localhost:8888/api/hello?lastName=Ichinomiya にアクセス
 5. `Hello Ichiro`の文字列がレスポンスされることを確認する
 
 ___
@@ -50,5 +52,5 @@ ___
 cd docker
 docker compose up
 ```
-2. http://localhost:8080/api/hello?lastName=Ichinomiya にアクセス
+2. http://localhost:8888/api/hello?lastName=Ichinomiya にアクセス
 3. `Hello Ichiro`の文字列がレスポンスされることを確認する

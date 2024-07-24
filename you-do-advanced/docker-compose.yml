@@ -3,7 +3,7 @@ services:
     build: ./api
     container_name: compose-hands-on-you-do-advanced-api
     ports:
-      - 8080:8080
+      - 8888:8080
     volumes:
       - ./api:/app
     networks:
