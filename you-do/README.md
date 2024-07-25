@@ -16,7 +16,7 @@ ___
 
 `docker-compose.yml`は、いくつかの欠陥を抱えています。
 正しく修正したり不足している実装を書き足して、`api`コンテナと`db`コンテナを正常に起動できるようにしましょう。
-修正が完了したら http://localhost:8080/api/hello?lastName=Ichinomiya にアクセスして
+修正が完了したら http://localhost:8888/api/hello?lastName=Ichinomiya にアクセスして
 `Hello Ichiro!`が正しく返ってくることを目撃しましょう。（apiの仕様はwe-doと同じです）
 
 ## ルール

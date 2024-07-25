@@ -6,7 +6,7 @@ services:
       target: development
     container_name: compose-hands-on-you-do-api
     ports:
-      - 8080:7070
+      - 8888:7070
     networks:
       - immersive-network
     command: java -jar app.jar
